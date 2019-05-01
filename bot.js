@@ -16,7 +16,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-  if (message.content === '!spin') {
+  if (message.content === '!lunch') {
     var pick = Math.floor(Math.random() * (options.length - 1))
     message.reply('Lunch today is at ' + options[pick]);
   }
