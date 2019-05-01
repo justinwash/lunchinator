@@ -19,7 +19,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-  if (message.content === '@Lunchinator !spin') {
+  if (message.content === '!spin') {
     var pick = Math.floor((Math.random() * (options.length - 1))
     message.reply('options[pick]');
   }
