@@ -10,6 +10,8 @@ const showTime = (timestamp) => {
 
   const elapsed = new Date().setHours(new Date().getHours() - 5) - timestamp
 
+  if (elapsed <= 0) return null
+
   if (elapsed <= MINUTE) return `${Math.round(elapsed / SECOND)}s`
   if (elapsed <= HOUR) return `${Math.round(elapsed / MINUTE)}m`
   if (elapsed <= DAY) return `${Math.round(elapsed / HOUR)}h`
