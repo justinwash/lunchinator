@@ -7,7 +7,7 @@ const options = [
   'Culinaria :|',
   'Food Court :)',
   'Sushi :D',
-  'Sad Sandwiches :(',
+  'Sad Sandwiches :purplebeard:',
   'Food Trucks :?',
   'High Pointe :P'
 ]
