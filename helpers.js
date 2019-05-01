@@ -8,7 +8,7 @@ const showTime = (timestamp) => {
   const MONTH = 1000 * 60 * 60 * 24 * 30
   const YEAR = 1000 * 60 * 60 * 24 * 30 * 12
 
-  const elapsed = Math.abs((timestamp - (new Date()).valueOf()))
+  const elapsed = Math.abs(new Date().valueOf() - timestamp)
 
   if (elapsed <= MINUTE) return `${Math.round(elapsed / SECOND)}s`
   if (elapsed <= HOUR) return `${Math.round(elapsed / MINUTE)}m`
