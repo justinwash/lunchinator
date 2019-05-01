@@ -30,6 +30,5 @@ client.on('message', message => {
   }
 });
 
-//console.log(showTime(new Date().setHours(14, 30)))
 client.login(process.env.BOT_TOKEN);
 
