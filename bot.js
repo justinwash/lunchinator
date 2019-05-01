@@ -25,7 +25,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content === '!lunchtime') {
-    var remaining = (new Date().setHours(11, 30) - new Date()).toHHMMSS();
+    var remaining = (new Date().setHours(11, 30) - new Date()).toString().toHHMMSS();
 
     message.reply(remaining + ' until lunchtime :(');
   }
