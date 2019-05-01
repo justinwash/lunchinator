@@ -4,9 +4,6 @@ const client = new Discord.Client();
 const options = [ 
   'Culinaria :|',
   'Culinaria :|',
-  'Culinaria :|',
-  'Culinaria :|',
-  'Culinaria :|',
   'Food Court :)',
   'Sushi :D',
   'Sad Sandwiches :(',
