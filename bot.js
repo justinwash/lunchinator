@@ -25,7 +25,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content === '!lunchtime') {
-    message.reply(showTime(Math.abs(new Date().setHours(11, 30))) + ' until lunchtime :(');
+    message.reply(showTime(new Date().setHours(11, 30)) + ' until lunchtime :(');
   }
 });
 
