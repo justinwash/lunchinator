@@ -17,3 +17,5 @@ const showTime = (timestamp) => {
   if (elapsed <= YEAR) return `${Math.round(elapsed / MONTH)}mo`
   return `${Math.round(elapsed / YEAR)}y`
 }
+
+module.exports = showTime;

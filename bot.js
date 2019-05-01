@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-require('./helpers.js');
+const showTime = require('./helpers.js')
 
 const options = [
   'Culinaria :|',
@@ -32,3 +32,4 @@ client.on('message', message => {
 });
 
 client.login(process.env.BOT_TOKEN);
+
