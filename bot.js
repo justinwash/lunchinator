@@ -48,7 +48,7 @@ client.on('message', message => {
     // Pick random lunch choice from options
     // TODO: seeded random on first pick of day, based on date
     var winner = getOption(Math.random());
-    message.reply('Lunch today is at ' + options[winner][0] + " " + ranges[winner] + "% chance");
+    message.reply('Lunch today is at ' + options[winner][0] + " " + ranges[winner] * 100 + "% chance");
   }
 });
 
