@@ -33,7 +33,7 @@ function getOption(pick) {
   for (var i = 0; i < ranges.length; i++) {
     rangesAdd += ranges[i];
     if (pick < rangesAdd) {
-      return options[i][0];
+      return i;
     }
   }
 }
