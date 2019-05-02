@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const showTime = require('./helpers.js')
+const timeStuff = require('./helpers.js')
 
 const options = [
   // Food choice followed by weighting
@@ -54,10 +54,13 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content === '!lunchtime') {
-    var remaining = showTime(new Date().setHours(11, 30));
+    // var remaining = showTime(new Date().setHours(11, 30));
+    var remaining = timeStuff.getTimeUntil(11, 30) //doesn't work with negatives. just looks weird. fux with it.
     message.reply(remaining != null ? remaining + ' until lunchtime :D' : 'The time for lunch has passed :(');
   }
 });
 
 client.login(process.env.BOT_TOKEN);
+
+
 

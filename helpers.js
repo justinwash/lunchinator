@@ -20,4 +20,26 @@ const showTime = (timestamp) => {
   return `${Math.round(elapsed / YEAR)}y`
 }
 
-module.exports = showTime;
+const getTimeUntil = (hour, minutes) => {
+  let currentTime = new Date().getTime();
+  let difference = (new Date().setHours(hour, minutes)) - currentTime;
+  return getTimeFromMilliseconds(difference);
+}
+
+const getTimeFromMilliseconds = (duration) => {
+  var milliseconds = parseInt((duration % 1000) / 100),
+    seconds = Math.floor((duration / 1000) % 60),
+    minutes = Math.floor((duration / (1000 * 60)) % 60),
+    hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+  hours = (hours < 10) ? "0" + hours : hours;
+  minutes = (minutes < 10) ? "0" + minutes : minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+  return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+}
+
+module.exports = {
+  showTime: showTime,
+  getTimeUntil: getTimeUntil
+}
