@@ -39,4 +39,7 @@ const getTimeFromMilliseconds = (duration) => {
   return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
 }
 
-module.exports = showTime;
+module.exports = {
+  showTime: showTime,
+  getTimeUntil: getTimeUntil
+}
