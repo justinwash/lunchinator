@@ -8,7 +8,7 @@ const showTime = (timestamp) => {
   const MONTH = 1000 * 60 * 60 * 24 * 30
   const YEAR = 1000 * 60 * 60 * 24 * 30 * 12
 
-  const elapsed = timestamp - new Date().getTime()
+  const elapsed = new Date().getTime() - timestamp
 
   if (elapsed <= 0) return null
 
