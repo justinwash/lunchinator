@@ -3,15 +3,17 @@ const client = new Discord.Client();
 const showTime = require('./helpers.js')
 
 const options = [
-  ['Culinaria :|', 8],
+  // Food choice followed by weighting
+  // higher weighting = higher chance to be picked
+  ['Culinaria :|', 9],
   ['Food Court :)', 3],
-  ['Food Trucks :?', 2],
+  ['Food Trucks :?', 1],
   ['Sushi :D', 1],
   ['Sad Sandwiches :purplebeard:', 1],
   ['High Pointe :P', 1]
 ];
 
-// Build 0-1 ranges depending on weighting
+// Build probability depending on weighting
 var weightSum = 0;
 var ranges = [];
 
@@ -21,7 +23,7 @@ for (var i = 0; i < options.length; i++) {
 }
 
 // Build array of odds - could probably just replace the options[0][1]
-// weighting int, or pop in if we want to keep it a const
+// weighting int if we don't need options to be a const
 for (var i = 0; i < options.length; i++) {
   ranges.push(options[i][1] / weightSum);
 }
@@ -36,7 +38,6 @@ function getOption(pick) {
   }
 }
 
-
 // Bot Start
 client.on('ready', () => {
   console.log('I am ready!');
@@ -46,8 +47,8 @@ client.on('message', message => {
   if (message.content === '!lunch') {
     // Pick random lunch choice from options
     // TODO: seeded random on first pick of day, based on date
-    var pick = Math.random();
-    message.reply('Lunch today is at ' + getOption(pick));
+    var winner = getOption(Math.random());
+    message.reply('Lunch today is at ' + options[winner][0] + " " + ranges[winner] + "% chance");
   }
 });
 
