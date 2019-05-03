@@ -3,6 +3,8 @@ const client = new Discord.Client();
 const timeStuff = require('./helpers.js')
 var seedrandom = require('seedrandom');
 
+var timeForLunch = '11:30'
+
 const options = [
   // Food choice followed by weighting
   // higher weighting = higher chance to be picked
@@ -78,9 +80,19 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+  if (message.content.substr(0, 13) === '!setlunchtime') {
+    console.log(message.content.substr(14, 18))
+    if (/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(message.content.substr(14, 18))) {
+      timeForLunch = message.content.substr(14, 18);
+      message.reply('Lunchtime set to ' + timeForLunch);
+    }
+  }
+})
+
+client.on('message', message => {
   if (message.content === '!lunchtime') {
     // var remaining = showTime(new Date().setHours(11, 30));
-    var remaining = timeStuff.getTimeUntil(11, 30) //doesn't work with negatives. just looks weird. fux with it.
+    var remaining = timeStuff.getTimeUntil(timeForLunch) //doesn't work with negatives. just looks weird. fux with it.
     message.reply(remaining != null ? remaining + ' until lunchtime :D' : 'The time for lunch has passed :(');
   }
 });
