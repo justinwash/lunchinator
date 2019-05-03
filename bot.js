@@ -65,7 +65,7 @@ client.on('message', message => {
       seededRandom = seedrandom(today);
       lunchPick = getOption(seededRandom);
     }
-    message.reply('Lunch today is at ' + options[lunchPick][0] + " " + ranges[lunchPick] * 100 + "% chance");
+    message.reply('Lunch today is at ' + options[lunchPick] + " " + ranges[lunchPick] * 100 + "% chance");
   }
 });
 
