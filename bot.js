@@ -68,7 +68,7 @@ client.on('message', message => {
 client.on('message', message => {
   if (message.content === '!lunchtime') {
     // var remaining = showTime(new Date().setHours(11, 30));
-    var remaining = timeStuff.getTimeUntil(11, 30) //doesn't work with negatives. just looks weird. fux with it.
+    var remaining = timeStuff.getTimeUntil(timeForLunch) //doesn't work with negatives. just looks weird. fux with it.
     message.reply(remaining != null ? remaining + ' until lunchtime :D' : 'The time for lunch has passed :(');
   }
 });
