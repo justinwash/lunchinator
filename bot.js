@@ -99,7 +99,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content === '!dinner' || message.content === '!breakfast') {
-    message.reply('LUNCHinator... LUNCH. lunch only. not not lunch. lunchn\'ntn\'t.');
+    message.reply('LUNCHinator... LUNCH. lunch only. not not lunch. lunchn\'tn\'t.');
   }
 });
 
