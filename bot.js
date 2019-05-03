@@ -119,6 +119,26 @@ client.on('message', message => {
   }
 });
 
+client.on('message', message => {
+  if (message.content === '!dinner' || message.content === '!breakfast') {
+    message.reply('LUNCHinator... LUNCH. lunch only. not not lunch. lunchn\'tn\'t.');
+  }
+});
+
+client.on('message', message => {
+  function recurse(index) {
+    if (index > 0) {
+      message.reply('what\'s that');
+      recurse(index - 1)
+    }
+  }
+
+  if (message.content === '!recursion') {
+    var index = 10
+    recurse(index)
+  }
+});
+
 console.log(process.env);
 client.login(process.env.BOT_TOKEN);
 
