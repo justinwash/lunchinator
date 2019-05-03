@@ -56,13 +56,11 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-  console.log('second part: ' + message.content.substr(0, 12))
-  console.log('second part: ' + message.content.substr(14, 18))
-  if (message.content.substr(0, 12) === '!setlunchtime') {
+  if (message.content.substr(0, 13) === '!setlunchtime') {
     console.log(message.content.substr(14, 18))
     if (/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(message.content.substr(14, 18))) {
       timeForLunch = message.content.substr(14, 18);
-      console.log(timeForLunch);
+      message.reply('Lunchtime set to ' + timeForLunch);
     }
   }
 })
