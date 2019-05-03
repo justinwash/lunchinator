@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const timeStuff = require('./helpers.js')
+var seedrandom = require('seedrandom');
 
 var timeForLunch = '11:30'
 
@@ -16,9 +17,12 @@ const options = [
   ['ChiliMacs', 1]
 ];
 
-// Build probability depending on weighting
 var weightSum = 0;
 var ranges = [];
+var today = new Date();
+var rightNow = new Date();
+var lunchPick;
+var seededRandom;
 
 // Get sum of weightings
 for (var i = 0; i < options.length; i++) {
@@ -41,13 +45,33 @@ function getOption(pick) {
   }
 }
 
+function getToday() {
+  rightNow = new Date();
+  return "" + rightNow.getFullYear() + (rightNow.getMonth() + 1) + rightNow.getDate();
+}
+
 // Bot Start
 client.on('ready', () => {
   console.log('I am ready!');
 });
 
+// Display current lunch pick
 client.on('message', message => {
   if (message.content === '!lunch') {
+    // Check if this is the first time calling this of the day
+    if (today != getToday()) {
+      // Yes, first time calling today
+      today = getToday();
+      seededRandom = seedrandom(today);
+      lunchPick = getOption(seededRandom);
+    }
+    message.reply('Lunch today is at ' + options[lunchPick][0] + " " + ranges[lunchPick] * 100 + "% chance");
+  }
+});
+
+// Roll for new lunch pick
+client.on('message', message => {
+  if (message.content === '!lunchroll') {
     // Pick random lunch choice from options
     // TODO: seeded random on first pick of day, based on date
     var winner = getOption(Math.random());
