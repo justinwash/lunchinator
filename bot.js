@@ -21,7 +21,7 @@ var weightSum = 0;
 var ranges = [];
 var today = new Date();
 var rightNow = new Date();
-var lunchPick;
+var lunchPick = 0;
 var seededRandom;
 
 // Get sum of weightings
