@@ -52,8 +52,12 @@ function getToday() {
 }
 
 function lunchReply(message) {
-  message.reply('Lunch today is at ' + options[lunchPick][0] + " " + (ranges[lunchPick] * 100).toFixed(2) + "% chance\n" +
+  if (rerolls) {
+    message.reply('Lunch today is at ' + options[lunchPick][0] + " " + (ranges[lunchPick] * 100).toFixed(2) + "% chance\n" +
     "You can reroll the choice with !lunchroll. " + rerolls + " remaining.");
+  } else {
+    message.reply('Hope you like ' + options[lunchPick][0] + " because that was your last reroll! " + (ranges[lunchPick] * 100).toFixed(2) + "% chance");
+  }
 }
 
 // Bot Start
