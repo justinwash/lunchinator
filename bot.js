@@ -143,7 +143,7 @@ client.on('message', message => {
   if (message.content.substr(0,10) === '!recursion') {
     var index = message.content.substr(11,message.content.length).length
     if (index <= 30) recurse(index)
-    else message.reply('recursion limited to 20 characters') return
+    else message.reply('recursion limited to 20 characters')
   }
 });
 
