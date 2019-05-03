@@ -125,7 +125,9 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content === '!dinner' || message.content === '!breakfast') {
-    message.reply('LUNCHinator... LUNCH. lunch only. not not lunch. lunchn\'tn\'t.');
+    rerolls -= 1;
+    message.reply('LUNCHinator... LUNCH. lunch only. not not lunch. lunchn\'tn\'t.\n' + 
+    "You just lost a reroll for that.");
   }
 });
 
