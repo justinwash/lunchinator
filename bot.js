@@ -51,7 +51,7 @@ function getToday() {
   return "" + rightNow.getFullYear() + (rightNow.getMonth() + 1) + rightNow.getDate();
 }
 
-function lunchReply() {
+function lunchReply(message) {
   message.reply('Lunch today is at ' + options[lunchPick][0] + " " + (ranges[lunchPick] * 100).toFixed(2) + "% chance\n" +
     "You can reroll the choice with !lunchroll. " + rerolls + " remaining.");
 }
@@ -71,9 +71,9 @@ client.on('message', message => {
       today = getToday();
       seededRandom = seedrandom(today);
       lunchPick = getOption(seededRandom());
-      lunchReply();
+      lunchReply(message);
     } else {
-      lunchReply();
+      lunchReply(message);
     }
   }
 });
@@ -88,12 +88,12 @@ client.on('message', message => {
       today = getToday();
       seededRandom = seedrandom(today);
       lunchPick = getOption(seededRandom());
-      lunchReply();
+      lunchReply(message);
     } else {
       if (rerolls) {
         rerolls -= 1;
         lunchPick = getOption(Math.random());
-        lunchReply();
+        lunchReply(message);
       } else {
         message.reply('You have no more rerolls!');
       }
