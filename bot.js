@@ -22,6 +22,7 @@ var ranges = [];
 var today = new Date();
 var rightNow = new Date();
 var lunchPick = 0;
+var rerolls = 3;
 var seededRandom;
 
 // Get sum of weightings
@@ -50,6 +51,11 @@ function getToday() {
   return "" + rightNow.getFullYear() + (rightNow.getMonth() + 1) + rightNow.getDate();
 }
 
+function lunchReply() {
+  message.reply('Lunch today is at ' + options[lunchPick][0] + " " + (ranges[lunchPick] * 100).toFixed(2) + "% chance\n" +
+    "You can reroll the choice with !lunchroll. " + rerolls + " remaining.");
+}
+
 // Bot Start
 client.on('ready', () => {
   console.log('I am ready!');
@@ -60,22 +66,38 @@ client.on('message', message => {
   if (message.content === '!lunch') {
     // Check if this is the first time calling this of the day
     if (today != getToday()) {
-      // Yes, first time calling today
+      // Make new function for initDay
+      rerolls = 3;
       today = getToday();
       seededRandom = seedrandom(today);
       lunchPick = getOption(seededRandom());
+      lunchReply();
+    } else {
+      lunchReply();
     }
-    message.reply('Lunch today is at ' + options[lunchPick][0] + " " + (ranges[lunchPick] * 100).toFixed(2) + "% chance");
   }
 });
 
 // Roll for new lunch pick
 client.on('message', message => {
   if (message.content === '!lunchroll') {
-    // Pick random lunch choice from options
-    // TODO: seeded random on first pick of day, based on date
-    var winner = getOption(Math.random());
-    message.reply('Lunch today is at ' + options[winner][0] + " " + ranges[winner] * 100 + "% chance");
+    // Check if this is the first time calling this of the day
+    if (today != getToday()) {
+      // Make new function for initDay
+      rerolls = 3;
+      today = getToday();
+      seededRandom = seedrandom(today);
+      lunchPick = getOption(seededRandom());
+      lunchReply();
+    } else {
+      if (rerolls) {
+        rerolls -= 1;
+        lunchPick = getOption(Math.random());
+        lunchReply();
+      } else {
+        message.reply('You have no more rerolls!');
+      }
+    }
   }
 });
 
