@@ -10,7 +10,8 @@ const options = [
   ['Food Trucks :?', 1],
   ['Sushi :D', 1],
   ['Sad Sandwiches :purplebeard:', 1],
-  ['High Pointe :P', 1]
+  ['High Pointe :P', 1],
+  ['ChiliMacs', 1]
 ];
 
 // Build probability depending on weighting
@@ -60,6 +61,7 @@ client.on('message', message => {
   }
 });
 
+console.log(process.env);
 client.login(process.env.BOT_TOKEN);
 
 
