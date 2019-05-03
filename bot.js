@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const timeStuff = require('./helpers.js')
 
+var timeForLunch = '11:30'
+
 const options = [
   // Food choice followed by weighting
   // higher weighting = higher chance to be picked
@@ -52,6 +54,15 @@ client.on('message', message => {
     message.reply('Lunch today is at ' + options[winner][0] + " " + ranges[winner] * 100 + "% chance");
   }
 });
+
+client.on('message', message => {
+  if (message.content.substr(0, 12) === '!setlunchtime') {
+    if (/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(message.content.substr(14, 18))) {
+      timeForLunch = message.content.substr(14, 18);
+      console.log(timeForLunch);
+    }
+  }
+})
 
 client.on('message', message => {
   if (message.content === '!lunchtime') {
