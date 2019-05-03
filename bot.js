@@ -103,6 +103,20 @@ client.on('message', message => {
   }
 });
 
+client.on('message', message => {
+  function recurse(index) {
+    if (index > 0) {
+      message.reply('what\'s that');
+      recurse(index - 1)
+    }
+  }
+
+  if (message.content === '!recursion') {
+    var index = 10
+    recurse(index)
+  }
+});
+
 console.log(process.env);
 client.login(process.env.BOT_TOKEN);
 
