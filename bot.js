@@ -63,9 +63,9 @@ client.on('message', message => {
       // Yes, first time calling today
       today = getToday();
       seededRandom = seedrandom(today);
-      lunchPick = getOption(seededRandom);
+      lunchPick = getOption(seededRandom());
     }
-    message.reply('Lunch today is at ' + options[lunchPick] + " " + ranges[lunchPick] * 100 + "% chance");
+    message.reply('Lunch today is at ' + options[lunchPick][0] + " " + ranges[lunchPick] * 100 + "% chance");
   }
 });
 
