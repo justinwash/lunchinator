@@ -99,7 +99,7 @@ client.on('message', message => {
         lunchPick = getOption(Math.random());
         lunchReply(message);
       } else {
-        message.reply('You have no more rerolls!');
+        message.reply('You have no more rerolls! You are stuck with ' + options[lunchPick][0]);
       }
     }
   }
