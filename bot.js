@@ -133,15 +133,15 @@ client.on('message', message => {
 
 client.on('message', message => {
   function recurse(index) {
-    var response = 'what\'s recursion'
+    var response = message.substr(11,message.length())
     if (index > 0) {
       message.reply(response.substr(0, index));
       recurse(index - 1)
     }
   }
 
-  if (message.content === '!recursion') {
-    var index = 16
+  if (message.content.substr(0,10) === '!recursion') {
+    var index = message.substr(11,message.length()).length()
     recurse(index)
   }
 });
