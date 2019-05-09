@@ -52,7 +52,7 @@ function getToday() {
 }
 
 function lunchReply(message) {
-  if (rerolls) {
+  if (rerolls > 0) {
     message.reply('Lunch today is at ' + options[lunchPick][0] + " " + (ranges[lunchPick] * 100).toFixed(2) + "% chance\n" +
     "You can reroll the choice with !lunchroll. " + rerolls + " remaining.");
   } else {
@@ -94,7 +94,7 @@ client.on('message', message => {
       lunchPick = getOption(seededRandom());
       lunchReply(message);
     } else {
-      if (rerolls) {
+      if (rerolls > 0) {
         rerolls -= 1;
         lunchPick = getOption(Math.random());
         lunchReply(message);
