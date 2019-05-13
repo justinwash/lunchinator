@@ -24,6 +24,7 @@ var rightNow = new Date();
 var lunchPick = 0;
 var rerolls = 3;
 var seededRandom;
+const tekkentime = '19:00';
 
 // Get sum of weightings
 for (var i = 0; i < options.length; i++) {
@@ -54,7 +55,7 @@ function getToday() {
 function lunchReply(message) {
   if (rerolls > 0) {
     message.reply('Lunch today is at ' + options[lunchPick][0] + " " + (ranges[lunchPick] * 100).toFixed(2) + "% chance\n" +
-    "You can reroll the choice with !lunchroll. " + rerolls + " remaining.");
+      "You can reroll the choice with !lunchroll. " + rerolls + " remaining.");
   } else {
     message.reply('Hope you like ' + options[lunchPick][0] + " because that was your last reroll! " + (ranges[lunchPick] * 100).toFixed(2) + "% chance");
   }
@@ -107,7 +108,6 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.substr(0, 13) === '!setlunchtime') {
-    console.log(message.content.substr(14, 18))
     if (/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(message.content.substr(14, 18))) {
       timeForLunch = message.content.substr(14, 18);
       message.reply('Lunchtime set to ' + timeForLunch);
@@ -118,32 +118,45 @@ client.on('message', message => {
 client.on('message', message => {
   if (message.content === '!lunchtime') {
     // var remaining = showTime(new Date().setHours(11, 30));
-    var remaining = timeStuff.getTimeUntil(timeForLunch) //doesn't work with negatives. just looks weird. fux with it.
+    var remaining = timeStuff.getTimeUntil(timeForLunch); //doesn't work with negatives. just looks weird. fux with it.
     message.reply(remaining != null ? remaining + ' until lunchtime :D' : 'The time for lunch has passed :(');
   }
 });
 
 client.on('message', message => {
   if (message.content === '!dinner' || message.content === '!breakfast') {
-    rerolls -= 1;
-    message.reply('LUNCHinator... LUNCH. lunch only. not not lunch. lunchn\'tn\'t.\n' + 
-    "You just lost a reroll for that.");
+    if (rerolls > 0) {
+      rerolls -= 1;
+    }
+    message.reply('LUNCHinator... LUNCH. lunch only. not not lunch. lunchn\'tn\'t.\n' +
+      "You just lost a reroll for that.");
   }
 });
 
 client.on('message', message => {
   function recurse(index) {
-    var response = message.content.substr(11,message.length)
+    var response = message.content.substr(11, message.length);
     if (index > 0) {
       message.reply(response.substr(0, index));
-      recurse(index - 1)
+      recurse(index - 1);
     }
   }
-  
-  if (message.content.substr(0,10) === '!recursion') {
-    var index = message.content.substr(11,message.content.length).length
-    if (index <= 30) recurse(index)
-    else message.reply('recursion limited to 20 characters')
+
+  if (message.content.substr(0, 10) === '!recursion') {
+    var index = message.content.substr(11, message.content.length).length;
+    if (index <= 30) recurse(index);
+    else message.reply('recursion limited to 20 characters');
+  }
+});
+
+client.on('message', message => {
+  if (message.content === '!tekkentime') {
+    const remaining = timeStuff.getTimeUntilTekken(tekkentime);
+    if (remaining.days > 0) {
+      message.reply('There are ' + remaining.days + 'left! Get Ready For the Next Battle');
+    } else {
+      message.reply('Only ' + remaining.time + ' !!!!');
+    }
   }
 });
 
