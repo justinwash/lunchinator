@@ -18,23 +18,23 @@ describe('testing sooshDay', () => {
     var date4 = new Date('2019-06-15T12:00:00'); // false: 15th and saturday
     var date5 = new Date('2019-06-17T12:00:00'); // true: 17th and monday
 
-    it('true: 15th and weekday', () => {
+    test('true: 15th and weekday', () => {
         expect(timeHelper.sooshDay(date1)).toBe(true);
     });
 
-    it('false: 1st and saturday', () => {
+    test('false: 1st and saturday', () => {
         expect(timeHelper.sooshDay(date2)).toBe(false);
     });
 
-    it('true: 3rd and monday', () => {
+    test('true: 3rd and monday', () => {
         expect(timeHelper.sooshDay(date3)).toBe(true);
     });
 
-    it('false: 15th and saturday', () => {
+    test('false: 15th and saturday', () => {
         expect(timeHelper.sooshDay(date4)).toBe(false);
     });
 
-    it('true: 17th and monday', () => {
+    test('true: 17th and monday', () => {
         expect(timeHelper.sooshDay(date5)).toBe(true);
     });
 
