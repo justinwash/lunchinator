@@ -162,6 +162,3 @@ client.on('message', message => {
 
 console.log(process.env);
 client.login(process.env.BOT_TOKEN);
-
-
-

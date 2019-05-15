@@ -1,7 +1,7 @@
 {
-  "name": "Test",
-  "description": "Test",
-  "version": "0.0.0",
+  "name": "lunchinator",
+  "description": "What are we eating for lunch today?",
+  "version": "0.0.1",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js",
