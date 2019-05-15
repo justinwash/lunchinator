@@ -30,7 +30,32 @@ const getTimeUntilTekken = (tekkenTime) => {
   return { days: daysUntil, time: timeUntil }
 }
 
+const sooshDay = (today) => {
+  var dayOfMonth = today.getDate(); // 1-31
+  var dayOfWeek = today.getDay(); // 0 = Sunday
+
+  // No weekends
+  if (dayOfWeek == 0 || dayOfWeek == 6) {
+    return false;
+  }
+  // Date is 1 or 15 and not a weekend: sushi time
+  if (dayOfMonth == 1 || dayOfMonth == 15) {
+    return true;
+  }
+  // Date is 2 or 16 and dayOfWeek is Monday
+  if ((dayOfMonth == 2 || dayOfMonth == 16) && (dayOfWeek == 1)) {
+    return true;
+  }
+  // Date is 3 or 17 and dayOfWeek is Monday
+  if ((dayOfMonth == 3 || dayOfMonth == 17) && (dayOfWeek == 1)) {
+    return true;
+  }
+
+  return false
+}
+
 module.exports = {
   getTimeUntil: getTimeUntil,
   getTimeUntilTekken: getTimeUntilTekken,
+  sooshDay: sooshDay
 }
