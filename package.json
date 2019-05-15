@@ -1,10 +1,11 @@
 {
-  "name": "Test",
-  "description": "Test",
-  "version": "0.0.0",
+  "name": "lunchinator",
+  "description": "What are we eating for lunch today?",
+  "version": "0.0.1",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node bot.js",
+    "test": "jest"
   },
   "dependencies": {
     "discord.js": "11.1.0",
@@ -12,5 +13,8 @@
     "luxon": "^1.12.1",
     "request": "2.81.0",
     "seedrandom": "^3.0.1"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0"
   }
 }
