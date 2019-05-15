@@ -153,7 +153,7 @@ client.on('message', message => {
   if (message.content === '!tekkentime') {
     const remaining = timeStuff.getTimeUntilTekken(tekkentime);
     if (remaining.days > 0) {
-      message.reply('There are ' + remaining.days + 'left! Get Ready For the Next Battle');
+      message.reply('There are ' + remaining.days + ' days left! Get Ready For the Next Battle');
     } else {
       message.reply('Only ' + remaining.time + ' !!!!');
     }
