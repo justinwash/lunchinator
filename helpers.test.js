@@ -4,11 +4,11 @@ jest.mock('luxon');
 
 test('testing luxon', () => {
     const expectedValue = {
-        days: '0',
-        time: '1:30'
+        days: undefined,
+        time: 0
     }
 
-    expect(timeHelper.getTimeUntilTekken('time')).toBe(expectedValue);
+    expect(timeHelper.getTimeUntilTekken('time')).toEqual(expectedValue);
 });
 
 describe('testing sooshDay', () => {
