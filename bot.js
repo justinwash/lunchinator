@@ -155,7 +155,7 @@ client.on('message', message => {
     if (remaining.days > 0) {
       message.reply('There are ' + remaining.days + ' days left! Get Ready For the Next Battle');
     } else {
-      message.reply('Only ' + remaining.time + ' !!!!');
+      message.reply('It\'s TEKKEN TIME! (...later)');
     }
   }
 });
