@@ -8,13 +8,14 @@ var timeForLunch = '11:30'
 const options = [
   // Food choice followed by weighting
   // higher weighting = higher chance to be picked
-  ['Culinaria :|', 9],
-  ['Food Court :)', 3],
-  ['Food Trucks :?', 1],
-  ['Sushi :D', 1],
-  ['Sad Sandwiches :purplebeard:', 1],
-  ['High Pointe :P', 1],
-  ['ChiliMacs', 1]
+  // ['Culinaria :|', 9],
+  // ['Food Court :)', 3],
+  // ['Food Trucks :?', 1],
+  // ['Sushi :D', 1],
+  // ['Sad Sandwiches :purplebeard:', 1],
+  // ['High Pointe :P', 1],
+  // ['ChiliMacs', 1]
+  ['Fuckin nowhere stay home ya dangus', 100]
 ];
 
 var weightSum = 0;
