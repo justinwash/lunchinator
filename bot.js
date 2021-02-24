@@ -15,7 +15,7 @@ const options = [
   // ['Sad Sandwiches :purplebeard:', 1],
   // ['High Pointe :P', 1],
   // ['ChiliMacs', 1]
-  ['Fuckin nowhere stay home ya dangus', 100]
+  ['nowhere stay home ya dangus', 100]
 ];
 
 var weightSum = 0;
