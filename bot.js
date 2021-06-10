@@ -154,9 +154,20 @@ client.on('message', message => {
   if (message.content === '!tekkentime') {
     const remaining = timeStuff.getTimeUntilTekken(tekkentime);
     if (remaining.days > 0) {
-      message.reply('There are ' + remaining.days + ' days left! Get Ready For the Next Battle');
+      message.reply('There are ' + remaining.days + ' days left. Get Ready For the Next Battle!');
     } else {
-      message.reply('It\'s TEKKEN TIME! (...later)');
+      message.reply('It\'s TEKKEN TIME!');
+    }
+  }
+});
+
+client.on('message', message => {
+  if (message.content === '!ggtime') {
+    const remaining = timeStuff.getTimeUntilTekken(tekkentime);
+    if (remaining.days > 0) {
+      message.reply('There are ' + remaining.days + ' days left. Get Ready to ROCK!');
+    } else {
+      message.reply('HEAVEN or HELL... It\'s GUILTY GEAR TIME!');
     }
   }
 });
