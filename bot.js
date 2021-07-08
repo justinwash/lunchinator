@@ -172,5 +172,17 @@ client.on('message', message => {
   }
 });
 
+
+client.on('message', message => {
+  if (message.content === '!heavenorhell') {
+    const remaining = timeStuff.getTimeUntilTekken(tekkentime);
+    if (remaining.days > 0) {
+      message.reply('The smell of the game is near, but there are still ' + remaining.days + ' days left. Blame the beasts.');
+    } else {
+      message.reply('HEAVEN or HELL... It\'s 🐬TOTSUGEKI🐬 TIME!');
+    }
+  }
+});
+
 console.log(process.env);
 client.login(process.env.BOT_TOKEN);
