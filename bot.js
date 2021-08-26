@@ -185,7 +185,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-  if (message.content.includes('dumpies')) {
+  if (message.content.toLower().includes('dumpies')) {
     message.reply('stop');
   }
 });
