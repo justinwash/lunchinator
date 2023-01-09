@@ -10,7 +10,7 @@
   "dependencies": {
     "discord.js": "11.1.0",
     "full-icu": "^1.2.1",
-    "luxon": "^1.12.1",
+    "luxon": "^2.5.2",
     "request": "2.81.0",
     "seedrandom": "^3.0.1"
   },
